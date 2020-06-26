@@ -24,3 +24,4 @@ sudo chmod 777 -R studio.sh
 mv opencv-4.3.0-android-sdk.zip ~/
 unzip opencv-4.3.0-android-sdk.zip
 ```
+3. Install Gradle's most recent release [Check from here](https://gradle.org/releases/)
