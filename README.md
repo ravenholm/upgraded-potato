@@ -8,6 +8,9 @@ A baseline android application leveraging the power of native C/C++ development 
 ```
 mv android-studio-ide-193.6514223-linux.tar.gz ~/
 tar xvzf android-studio-ide-193.6514223-linux.tar.gz
+cd android-studio-ide-193.6514223-linux/android-studio/bin/
+sudo chmod 777 -R studio.sh
+./studio.sh
 ```
 
 * Unzip your gzip to the Home folder
