@@ -136,5 +136,7 @@ Open your MainActivity file and implement the following:
         android:id="@+id/java_camera_view"
         />
 ```
-6. Do a Gradle sync and if everything does on perfectly then we are good. Now do a build and then we
-are pretty-much ready to install our app
+6. Finalisation before testing on an emulator
+
+* Do a Gradle sync and if everything goes on perfectly then we are good. 
+* Now do a build and then we are pretty-much ready to install our app
