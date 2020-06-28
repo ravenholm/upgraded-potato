@@ -17,8 +17,11 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.dnn.Net;
+
+import mynativetutorialpackage.NativeClass;
 
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
             public void onManagerConnected(int status) {
                 switch (status){
                     case BaseLoaderCallback.SUCCESS:
+                        System.loadLibrary("native-lib");
                         cameraBridgeViewBase.enableView();
                         break;
                     default:
@@ -75,9 +79,11 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         };
     }
 
+    //Mat is our image that has our pixel matrix information
+    Mat mRgba;
     @Override
     public void onCameraViewStarted(int width, int height) {
-
+        mRgba = new Mat(height, width, CvType.CV_8UC4);//8bits/4channels
     }
 
     @Override
@@ -87,8 +93,9 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
-        Mat frame = inputFrame.gray();
-        return frame;
+        mRgba = inputFrame.rgba();
+        NativeClass.testFunction(mRgba.getNativeObjAddr());
+        return mRgba;
     }
 
     @Override
